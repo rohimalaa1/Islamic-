@@ -71,9 +71,30 @@ export default function Home() {
 
       {/* Quick links */}
       <div>
-        <h2 className="text-base font-semibold mb-3" style={{ color: 'var(--color-text)' }}>
+        {/* <h2 className="text-base font-semibold mb-3" style={{ color: 'var(--color-text)' }}>
           🌟 الخدمات
-        </h2>
+        </h2> */}
+        {/* <h2 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
+  </svg>
+  الخدمات
+</h2> */}
+{/* <h2 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+  </svg>
+  الخدمات
+</h2> */}
+<h2 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+  <svg 
+    className="animate-slow-spin" 
+    width="20" height="20" viewBox="0 0 24 24" fill="#FFD700"
+  >
+    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
+  </svg>
+  الخدمات
+</h2>
         <div className="grid grid-cols-2 gap-3">
           {quickLinks.map((link, i) => (
             <motion.div key={link.to} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
