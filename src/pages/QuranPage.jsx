@@ -93,7 +93,6 @@ export default function QuranPage() {
       );
 
       const data = await res.json();
-
       setVerses(data?.data?.ayahs || []);
     } catch (err) {
       console.error('Surah error:', err);
@@ -108,7 +107,7 @@ export default function QuranPage() {
 
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold arabic-text" style={{ color: 'var(--color-gold)' }}>
+        <h1 className="text-xl font-bold" style={{ color: 'var(--color-gold)' }}>
           📖 {t('quran')}
         </h1>
 
@@ -136,11 +135,20 @@ export default function QuranPage() {
             exit={{ opacity: 0 }}
           >
 
+            {/* 🔍 Search */}
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={t('search')}
-              className="w-full px-4 py-3 rounded-xl mb-4"
+              className="
+                w-full px-4 py-3 mb-4 rounded-2xl
+                bg-[var(--bg-card)]/80 backdrop-blur-md
+                border border-white/10
+                text-[var(--text-primary)]
+                placeholder:opacity-40
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]
+                transition-all duration-300
+              "
             />
 
             {loadingSurahs ? (
@@ -152,23 +160,58 @@ export default function QuranPage() {
                 />
               </div>
             ) : (
-              <div className="space-y-2">
+
+              <div className="space-y-3">
                 {filtered.map((surah) => (
                   <motion.button
                     key={surah.number}
                     onClick={() => loadSurah(surah)}
-                    className="w-full flex items-center gap-4 px-4 py-3 rounded-xl"
+                    className="w-full flex items-center justify-between px-4 py-4 rounded-2xl border"
                   >
-                    <div className="w-10 h-10 flex items-center justify-center">
-                      {surah.number}
+
+                    <div className="text-sm opacity-70">
+                      {surah.verses} {isAr ? 'آيات' : 'verses'}
                     </div>
 
-                    <div className="flex-1 text-right">
-                      <div>{surah.name}</div>
-                      <div className="text-sm opacity-70">
-                        {surah.englishName} • {surah.verses}
+                    {/* 📖 الاسم + البسملة */}
+                    <div className="flex-1 text-right px-4">
+                      
+                      <div
+                        className="text-xl font-bold"
+                        style={{ fontFamily: "'Amiri', serif" }}
+                      >
+                        {surah.name}
                       </div>
+
+                      <div
+                        className="text-sm mt-1"
+                        style={{
+                          fontFamily: "'Amiri', serif",
+                          color: 'var(--color-gold)'
+                        }}
+                      >
+                        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+                      </div>
+
+                      <div className="text-xs opacity-60 mt-1">
+                        {surah.revelation}
+                      </div>
+
                     </div>
+
+                    <div
+                      className="w-12 h-12 flex items-center justify-center"
+                      style={{
+                        transform: 'rotate(45deg)',
+                        background: 'rgba(255,255,255,0.05)',
+                        borderRadius: '12px'
+                      }}
+                    >
+                      <span style={{ transform: 'rotate(-45deg)' }}>
+                        {surah.number}
+                      </span>
+                    </div>
+
                   </motion.button>
                 ))}
               </div>
@@ -189,17 +232,28 @@ export default function QuranPage() {
                 <div className="w-8 h-8 border-2 rounded-full animate-spin" />
               </div>
             ) : (
-              <div className="space-y-3">
-                {verses.map((ayah) => (
-                  <div key={ayah.numberInSurah} className="p-4 rounded-xl">
-                    <p className="text-right text-xl leading-loose">
-                      {ayah.text}
-                      <span style={{ color: 'gold' }}>
-                        {' '}﴿{ayah.numberInSurah}﴾
-                      </span>
-                    </p>
-                  </div>
-                ))}
+
+              <div className="p-4 rounded-xl">
+
+                {/* 📖 الآيات في النص */}
+                <p
+                  className="text-center leading-loose"
+                  style={{
+                    fontSize: '26px',
+                    lineHeight: '2.2',
+                    fontFamily: "'Amiri', 'Scheherazade', serif"
+                  }}
+                >
+                  {verses.map((ayah) => (
+                    <span key={ayah.numberInSurah}>
+                      {ayah.text}{' '}
+                      <span style={{ color: 'gold', fontSize: '18px' }}>
+                        ﴿{ayah.numberInSurah}﴾
+                      </span>{' '}
+                    </span>
+                  ))}
+                </p>
+
               </div>
             )}
           </motion.div>

@@ -38,6 +38,7 @@ export default function Home() {
             weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
           })}
         </p>
+        
       </motion.div>
 
       {/* Notification toggle */}
