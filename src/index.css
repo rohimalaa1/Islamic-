@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0d2318;
+  --color-surface: #122d1f;
+  --color-surface-2: #1a3d2b;
+  --color-border: rgba(212, 175, 55, 0.2);
+  --color-gold: #d4af37;
+  --color-gold-light: #f0d060;
+  --color-emerald: #2d6a4f;
+  --color-text: #e8f5e9;
+  --color-text-muted: #7fad8e;
+  --color-accent: #c8a84b;
+}
+
+.light {
+  --color-bg: #f0f7f2;
+  --color-surface: #ffffff;
+  --color-surface-2: #e8f5e9;
+  --color-border: rgba(45, 106, 79, 0.2);
+  --color-gold: #b8860b;
+  --color-gold-light: #d4a017;
+  --color-emerald: #2d6a4f;
+  --color-text: #0d2318;
+  --color-text-muted: #4a7c59;
+  --color-accent: #8b6914;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html[lang="ar"] body, .rtl body {
+  font-family: 'Amiri', 'Plus Jakarta Sans', sans-serif;
+}
+
+.arabic-text {
+  font-family: 'Amiri', serif;
+  line-height: 2.2;
+  direction: rtl;
+}
+
+.quran-text {
+  font-family: 'Scheherazade New', 'Amiri', serif;
+  font-size: 1.4rem;
+  line-height: 2.5;
+  direction: rtl;
+  text-align: center;
+}
+
+/* Islamic geometric border */
+.islamic-border {
+  border: 1px solid var(--color-border);
+  position: relative;
+}
+
+.islamic-border::before {
+  content: '✦';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg);
+  padding: 0 8px;
+  color: var(--color-gold);
+  font-size: 14px;
+}
+
+/* Gold shimmer animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: goldShimmer 3s linear infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-emerald); border-radius: 3px; }
+
+/* Prayer card glow */
+.prayer-active {
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), 0 0 60px rgba(212, 175, 55, 0.1);
+}
+
+/* Crescent decoration */
+.crescent::before {
+  content: '☽';
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  color: var(--color-gold);
+}
+
+/* Islamic pattern overlay */
+.pattern-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.04'%3E%3Cpath d='M40 0L50 30L80 40L50 50L40 80L30 50L0 40L30 30Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Smooth page transitions */
+.page-enter {
+  opacity: 0;
+  transform: translateY(16px);
+}
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+/* Counter button */
+.counter-ring {
+  stroke-dasharray: 251;
+  stroke-dashoffset: 251;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Notification badge */
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.badge-pulse {
+  animation: badgePulse 2s ease-in-out infinite;
+}
