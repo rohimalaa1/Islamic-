@@ -3,22 +3,19 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
-  base: '/islamic-pwa/', // ✅ هنا بس
+  base: '/', // ✅ أهم تعديل
 
   plugins: [
     react(),
 
     VitePWA({
-      // ❌ شيل base من هنا
       registerType: 'autoUpdate',
       manifestFilename: 'manifest.webmanifest',
       injectRegister: 'auto',
 
       includeAssets: [
         'logo-192.png',
-        'logo-512.png',
-        'logo-192.png.jpeg',
-        'pwa-192x192.png',
+        'logo-512.png'
       ],
 
       manifest: {
@@ -29,16 +26,19 @@ export default defineConfig({
         background_color: '#0d2318',
         display: 'standalone',
         orientation: 'portrait',
-        scope: '/islamic-pwa/',
-        start_url: '/islamic-pwa/',
+
+        // ✅ أهم تعديل هنا كمان
+        scope: '/',
+        start_url: '/',
+
         icons: [
           {
-            src: 'logo-192.png', // ✅ من غير /islamic-pwa/ هنا
+            src: 'logo-192.png',
             sizes: '192x192',
             type: 'image/png'
           },
           {
-            src: 'logo-512.png', // ✅ من غير /islamic-pwa/ هنا
+            src: 'logo-512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -47,7 +47,7 @@ export default defineConfig({
       },
 
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg}'], // ✅ أضفنا jpeg
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpeg}'],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/api\.aladhan\.com\/.*/i,
