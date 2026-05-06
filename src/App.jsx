@@ -47,8 +47,8 @@ function InstallButton() {
 export default function App() {
   return (
     <AppProvider>
-      {/* ✅ أضفنا basename هنا */}
-      <BrowserRouter basename="/islamic-pwa/">
+      {/* ✅ بدون basename */}
+      <BrowserRouter>
         <div
           className="min-h-screen"
           style={{ background: 'var(--color-bg)' }}
@@ -62,11 +62,11 @@ export default function App() {
               <Route path="/quran" element={<QuranPage />} />
               <Route path="/azkar" element={<AzkarPage />} />
               <Route path="/hadith" element={<HadithPage />} />
-               <Route path="/duas" element={<DuasPage />} />
-                <Route path="/ghazawat" element={<GhazawatPage />} />
-                  <Route path="/sahaba" element={<SahabaPage />} />
-                    <Route path="/sunnan" element={<SunnanPage />} />
-                         <Route path="/lessons" element={<LessonsPage />} />
+              <Route path="/duas" element={<DuasPage />} />
+              <Route path="/ghazawat" element={<GhazawatPage />} />
+              <Route path="/sahaba" element={<SahabaPage />} />
+              <Route path="/sunnan" element={<SunnanPage />} />
+              <Route path="/lessons" element={<LessonsPage />} />
               <Route path="/settings" element={<SettingsPage />} />
             </Routes>
           </main>
