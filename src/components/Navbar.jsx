@@ -3,12 +3,14 @@ import { NavLink, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useApp } from '../context/AppContext';
+import logo from '../assets/logo1.png';
 
 const navItems = [
   { path: '/', icon: '🏠', key: 'home' },
   { path: '/prayer', icon: '🕌', key: 'prayer_times' },
   { path: '/quran', icon: '📖', key: 'quran' },
   { path: '/azkar', icon: '📿', key: 'azkar' },
+    { path: '/duas', icon: '🤲', key: 'duas' },
   { path: '/hadith', icon: '📜', key: 'hadith' },
   { path: '/settings', icon: '⚙️', key: 'settings' },
 ];
@@ -26,16 +28,11 @@ export default function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 px-4 py-3 flex items-center justify-between"
       >
         <div className="flex items-center gap-2">
-          {/* اللوجو الجديد بدل ☪️ */}
-       <img 
-  src="/WhatsApp_Image_2026-05-05_at_1.24.08_AM-removebg-preview (1).png" 
-  alt="Islamic Logo" 
-  className="w-16 h-14 object-contain" 
-/>
-          
-          {/* <span className="font-display text-sm font-bold" style={{ color: 'var(--color-gold)' }}>
-            {t('app_name')}
-          </span> */}
+          <img 
+            src={logo} // ✅ استخدم المتغير
+            alt="Islamic Logo" 
+            className="w-16 h-14 object-contain" 
+          />
         </div>
 
         <div className="text-xs" style={{ color: 'var(--color-text-muted)' }}>

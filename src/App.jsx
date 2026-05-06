@@ -7,15 +7,54 @@ import PrayerPage from './pages/PrayerPage';
 import QuranPage from './pages/QuranPage';
 import AzkarPage from './pages/AzkarPage';
 import HadithPage from './pages/HadithPage';
+import DuasPage from './pages/DuasPage';
+import GhazawatPage from './pages/GhazawatPage';
+import SahabaPage from './pages/SahabaPage';
+import SunnanPage from './pages/SunnanPage';
+import LessonsPage from './pages/LessonsPage';
 import SettingsPage from './pages/SettingsPage';
+import useInstallPWA from './useInstallPWA';
 import './i18n';
+
+function InstallButton() {
+  const { isInstallable, installApp } = useInstallPWA();
+
+  if (!isInstallable) return null;
+
+  return (
+    <button
+      onClick={installApp}
+      style={{
+        position: 'fixed',
+        bottom: '20px',
+        left: '20px',
+        padding: '10px 14px',
+        background: '#1a472a',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '12px',
+        fontSize: '14px',
+        zIndex: 9999,
+        boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+        cursor: 'pointer'
+      }}
+    >
+      📲 تثبيت التطبيق
+    </button>
+  );
+}
 
 export default function App() {
   return (
     <AppProvider>
-      <BrowserRouter>
-        <div className="min-h-screen" style={{ background: 'var(--color-bg)' }}>
+      {/* ✅ أضفنا basename هنا */}
+      <BrowserRouter basename="/islamic-pwa/">
+        <div
+          className="min-h-screen"
+          style={{ background: 'var(--color-bg)' }}
+        >
           <Navbar />
+
           <main className="pt-16 pb-24 max-w-lg mx-auto">
             <Routes>
               <Route path="/" element={<Home />} />
@@ -23,9 +62,16 @@ export default function App() {
               <Route path="/quran" element={<QuranPage />} />
               <Route path="/azkar" element={<AzkarPage />} />
               <Route path="/hadith" element={<HadithPage />} />
+               <Route path="/duas" element={<DuasPage />} />
+                <Route path="/ghazawat" element={<GhazawatPage />} />
+                  <Route path="/sahaba" element={<SahabaPage />} />
+                    <Route path="/sunnan" element={<SunnanPage />} />
+                         <Route path="/lessons" element={<LessonsPage />} />
               <Route path="/settings" element={<SettingsPage />} />
             </Routes>
           </main>
+
+          <InstallButton />
         </div>
       </BrowserRouter>
     </AppProvider>

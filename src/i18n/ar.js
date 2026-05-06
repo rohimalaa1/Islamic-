@@ -52,5 +52,22 @@ export default {
     notification_settings: "إعدادات الإشعارات",
     general: "عام",
     save: "حفظ",
+    duas: "الأدعية",
+      "ghazawat": "الغزوات",
+       "sunnah": "سنة",
+      "sunnan": "السنن النبوية",
+      "sahaba_stories": "قصص الصحابة",
+     "companions_stories": "قصص الصحابة",
+       "sahaba_stories": "قصص الصحابة",
+       "sahaba": "قصص الصحابة",
+           "sunnah": "سنة",
+      "sunnan": "السنن النبوية",
+  "ghazawat": "الغزوات",
+  "companions_stories": "قصص الصحابة",
+  "settings": "الإعدادات",
+   "sahaba_stories": "قصص الصحابة",
+     "companions_stories": "قصص الصحابة",
+       "sahaba_stories": "قصص الصحابة",
+       "sahaba": "قصص الصحابة"
   }
 };

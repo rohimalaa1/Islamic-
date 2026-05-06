@@ -23,6 +23,11 @@ export default function Home() {
     { to: '/quran', icon: '📖', label: t('quran'), color: 'rgba(45,106,79,0.2)' },
     { to: '/azkar', icon: '📿', label: t('azkar'), color: 'rgba(212,175,55,0.15)' },
     { to: '/hadith', icon: '📜', label: t('hadith'), color: 'rgba(139,105,20,0.2)' },
+     { to: '/sunnan', icon: '✨', label: t('sunnan'), color: 'rgba(45,106,79,0.15)' },
+    { to: '/duas', icon: '🤲', label: t('duas'), color: 'rgba(56,100,180,0.2)' },
+    { to: '/ghazawat', icon: '⚔️', label: t('ghazawat'), color: 'rgba(180,60,60,0.15)' },
+        { to: '/sahaba', icon: '🌟', label: t('sahaba'), color: 'rgba(100,60,180,0.15)' },
+          { to: '/lessons', icon: '📚', label: 'الدروس الدينية', color: 'rgba(20,100,160,0.15)' },
     { to: '/settings', icon: '⚙️', label: t('settings'), color: 'rgba(100,100,150,0.2)' },
   ];
 
