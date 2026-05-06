@@ -106,14 +106,12 @@ function LessonViewer({ lesson, onBack }) {
     <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: -30 }} className="space-y-4">
 
-      {/* Back */}
       <button onClick={onBack}
         className="flex items-center gap-2 text-sm px-3 py-1.5 rounded-lg"
         style={{ background: 'var(--color-surface-2)', color: 'var(--color-text-muted)', border: '1px solid var(--color-border)' }}>
         ← العودة
       </button>
 
-      {/* Header */}
       <div className="rounded-2xl p-5 relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, var(--color-surface), var(--color-surface-2))', border: '1px solid var(--color-border)' }}>
         <div className="absolute inset-0 opacity-5 pattern-overlay" />
@@ -135,7 +133,6 @@ function LessonViewer({ lesson, onBack }) {
         </div>
       </div>
 
-      {/* Key points */}
       <div className="rounded-xl p-4" style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
         <h3 className="text-xs font-semibold mb-2" style={{ color: 'var(--color-text-muted)' }}>📌 النقاط الرئيسية</h3>
         <div className="flex flex-wrap gap-2">
@@ -148,22 +145,22 @@ function LessonViewer({ lesson, onBack }) {
         </div>
       </div>
 
-      {/* Content */}
+      {/* ✅ FIXED CONTENT */}
       <div className="rounded-2xl p-5 space-y-3"
         style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
         {paragraphs.map((p, i) => (
           <p key={i} className="arabic-text text-sm" style={{
-            color: p.startsWith('•') || /^\d+\./.test(p) ? 'var(--color-text)' : 'var(--color-text)',
+            color: p.includes('ﷺ') || p.includes('تعالى')
+              ? 'var(--color-gold)'
+              : 'var(--color-text)',
             lineHeight: 2,
             fontWeight: p.endsWith(':') || p.startsWith('**') ? '600' : '400',
-            color: p.includes('ﷺ') || p.includes('تعالى') ? 'var(--color-text)' : 'var(--color-text)',
           }}>
             {p.replace(/\*\*/g, '')}
           </p>
         ))}
       </div>
 
-      {/* Quiz */}
       {lesson.quiz && lesson.quiz.length > 0 && (
         <div className="rounded-2xl p-5"
           style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
@@ -203,7 +200,6 @@ export default function LessonsPage() {
 
       <AnimatePresence mode="wait">
         {!selectedCat ? (
-          /* Categories */
           <motion.div key="cats" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="space-y-3">
             {lessonsCategories.map((cat, i) => (
@@ -235,7 +231,6 @@ export default function LessonsPage() {
             ))}
           </motion.div>
         ) : (
-          /* Lessons list */
           <motion.div key="lessons" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }} className="space-y-3">
             <button onClick={() => setSelectedCat(null)}
