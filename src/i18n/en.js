@@ -52,5 +52,17 @@ export default {
     notification_settings: "Notification Settings",
     general: "General",
     save: "Save",
+    "sunnan_title": "Prophetic Sunnahs",
+  "sunnan_subtitle": "Follow the Prophet ﷺ and increase your rewards daily 🤍",
+  "sunnah_muakkada": "As-Sunan Ar-Rawatib",
+  "friday_sunnan": "Friday Sunnan",
+  "daily_sunnan": "Daily Sunnahs",
+  "other_sunnan": "Other Sunnahs",
+  "ghazawat": "Ghazawat",
+  "sahaba": "Companions Stories",
+  "religious_lessons": "Religious Lessons",
+  "settings": "Settings",
+  "items_count": "Items"
+    
   }
 };

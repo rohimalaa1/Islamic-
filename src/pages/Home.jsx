@@ -23,11 +23,11 @@ export default function Home() {
     { to: '/quran', icon: '📖', label: t('quran'), color: 'rgba(45,106,79,0.2)' },
     { to: '/azkar', icon: '📿', label: t('azkar'), color: 'rgba(212,175,55,0.15)' },
     { to: '/hadith', icon: '📜', label: t('hadith'), color: 'rgba(139,105,20,0.2)' },
-     { to: '/sunnan', icon: '✨', label: t('sunnan'), color: 'rgba(45,106,79,0.15)' },
+    { to: '/sunnan', icon: '✨', label: t('sunnan_title'), color: 'rgba(45,106,79,0.15)' },
     { to: '/duas', icon: '🤲', label: t('duas'), color: 'rgba(56,100,180,0.2)' },
     { to: '/ghazawat', icon: '⚔️', label: t('ghazawat'), color: 'rgba(180,60,60,0.15)' },
-        { to: '/sahaba', icon: '🌟', label: t('sahaba'), color: 'rgba(100,60,180,0.15)' },
-          { to: '/lessons', icon: '📚', label: 'الدروس الدينية', color: 'rgba(20,100,160,0.15)' },
+    { to: '/sahaba', icon: '🌟', label: t('sahaba'), color: 'rgba(100,60,180,0.15)' },
+    { to: '/lessons', icon: '📚', label: t('religious_lessons'), color: 'rgba(20,100,160,0.15)' },
     { to: '/settings', icon: '⚙️', label: t('settings'), color: 'rgba(100,100,150,0.2)' },
   ];
 
@@ -36,20 +36,17 @@ export default function Home() {
       {/* Greeting */}
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-xl font-bold arabic-text" style={{ color: 'var(--color-gold)' }}>
-          السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ
+          {t('greeting', 'السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ')}
         </h1>
         <p className="text-sm" style={{ color: 'var(--color-text-muted)' }}>
           {new Date().toLocaleDateString(i18n.language === 'ar' ? 'ar-SA-u-ca-islamic' : 'en-US', {
             weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
           })}
         </p>
-        
       </motion.div>
 
-      {/* Notification toggle */}
       <NotificationToggle />
 
-      {/* Prayer countdown */}
       {loading ? (
         <div className="rounded-2xl p-8 flex items-center justify-center"
           style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
@@ -64,7 +61,6 @@ export default function Home() {
         <PrayerCountdown nextPrayer={nextPrayer} countdown={countdown} />
       )}
 
-      {/* Prayer list */}
       {prayerTimes && (
         <div>
           <h2 className="text-base font-semibold mb-3" style={{ color: 'var(--color-text)' }}>
@@ -74,32 +70,17 @@ export default function Home() {
         </div>
       )}
 
-      {/* Quick links */}
+      {/* Quick links Section */}
       <div>
-        {/* <h2 className="text-base font-semibold mb-3" style={{ color: 'var(--color-text)' }}>
-          🌟 الخدمات
-        </h2> */}
-        {/* <h2 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="#FFD700" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
-  </svg>
-  الخدمات
-</h2> */}
-{/* <h2 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFD700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-  </svg>
-  الخدمات
-</h2> */}
-<h2 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
-  <svg 
-    className="animate-slow-spin" 
-    width="20" height="20" viewBox="0 0 24 24" fill="#FFD700"
-  >
-    <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
-  </svg>
-  الخدمات
-</h2>
+        <h2 className="text-base font-semibold mb-3 flex items-center gap-2" style={{ color: 'var(--color-text)' }}>
+          <svg 
+            className="animate-slow-spin" 
+            width="20" height="20" viewBox="0 0 24 24" fill="#FFD700"
+          >
+            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
+          </svg>
+          {t('services', 'الخدمات')}
+        </h2>
         <div className="grid grid-cols-2 gap-3">
           {quickLinks.map((link, i) => (
             <motion.div key={link.to} initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
@@ -123,7 +104,7 @@ export default function Home() {
           <h3 className="font-semibold text-sm" style={{ color: 'var(--color-gold)' }}>{t('daily_hadith')}</h3>
         </div>
         <p className="arabic-text text-sm leading-loose mb-2" style={{ color: 'var(--color-text)' }}>
-          {hadith.arabic}
+          {i18n.language === 'ar' ? hadith.arabic : (hadith.english || hadith.arabic)}
         </p>
         <p className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
           — {hadith.narrator} | {hadith.source}
