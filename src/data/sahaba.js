@@ -320,5 +320,4 @@ export const sahaba = [
     quote: "حمزة سيد الشهداء عند الله."
   }
 ];
-
 export const sahabaCategories = [...new Set(sahaba.map(s => s.category))];
