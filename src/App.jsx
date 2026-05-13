@@ -15,7 +15,7 @@ import LessonsPage from './pages/LessonsPage';
 import SettingsPage from './pages/SettingsPage';
 import TashahhudQiblaPage from './pages/TashahhudQiblaPage';
 import TasbihPage from './pages/TasbihPage';
-import PrayerTrackerPage from './pages/PrayerTrackerPage.jsx';
+import PrayerTrackerPage from "./pages/PrayerTrackerPage.jsx";
 import StatsPage from './pages/StatsPage';
 import AdhanBadge from './components/AdhanBadge';
 import { useNotifications } from './hooks/useNotifications';
