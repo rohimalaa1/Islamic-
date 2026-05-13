@@ -3,6 +3,21 @@ import { useApp } from '../context/AppContext';
 
 const PRAYER_NAMES = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
+export const formatTime = (time24, lang = 'en') => {
+  const [h, m] = time24.split(':').map(Number);
+  const h12 = h % 12 || 12;
+  const mm = m.toString().padStart(2, '0');
+  const isAr = lang === 'ar';
+  const period = h >= 12
+    ? (isAr ? 'م' : 'PM')
+    : (isAr ? 'ص' : 'AM');
+  if (isAr) {
+    const toAr = n => n.toString().replace(/\d/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
+    return `${toAr(h12)}:${toAr(mm)} ${period}`;
+  }
+  return `${h12}:${mm} ${period}`;
+};
+
 export const usePrayerTimes = () => {
   const { calculationMethod, location, setLocation } = useApp();
   const [prayerTimes, setPrayerTimes] = useState(null);

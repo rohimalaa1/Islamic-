@@ -53,21 +53,76 @@ export default {
     general: "عام",
     save: "حفظ",
     duas: "الأدعية",
-      "ghazawat": "الغزوات",
-       "sunnah": "سنة",
-      "sunnan": "السنن النبوية",
-      "sahaba_stories": "قصص الصحابة",
-     "companions_stories": "قصص الصحابة",
-       "sahaba_stories": "قصص الصحابة",
-       "sahaba": "قصص الصحابة",
-           "sunnah": "سنة",
-      "sunnan": "السنن النبوية",
-  "ghazawat": "الغزوات",
-  "companions_stories": "قصص الصحابة",
-  "settings": "الإعدادات",
-   "sahaba_stories": "قصص الصحابة",
-     "companions_stories": "قصص الصحابة",
-       "sahaba_stories": "قصص الصحابة",
-       "sahaba": "قصص الصحابة"
+    ghazawat: "الغزوات",
+    sunnah: "سنة",
+    sunnan: "السنن النبوية",
+    sunnan_title: "السنن النبوية",
+    sunnan_subtitle: "اتبع النبي ﷺ وزد حسناتك يومياً 🤍",
+    sunnah_muakkada: "السنن المؤكدة",
+    friday_sunnan: "سنن الجمعة",
+    daily_sunnan: "السنن اليومية",
+    other_sunnan: "سنن أخرى",
+    sahaba: "قصص الصحابة",
+    sahaba_stories: "قصص الصحابة",
+    companions_stories: "قصص الصحابة",
+    religious_lessons: "الدروس الدينية",
+    items_count: "عناصر",
+    tashahhud_qibla: "التشهد والقبلة",
+    prayer_tracker: "تتبع الصلوات",
+tasbih: "السبحة",
+stats: "الإحصائيات",
+// ── صفحة الإحصائيات ──────────────────────────────────────
+stats_title: "📊 إحصائيات الصلوات",
+stats_subtitle: "تابع انتظامك في الصلوات",
+
+last_7_days: "آخر 7 أيام",
+last_30_days: "آخر 30 يوم",
+
+prayers_performed: "صلوات مؤداة",
+prayers_missed: "صلوات فائتة",
+day_streak: "سلسلة الأيام",
+
+stats_excellent: "🌟 ممتاز! استمر",
+stats_good: "👍 جيد! يمكنك التحسن أكثر",
+stats_needs_effort: "⚡ يحتاج مجهود أكثر",
+stats_dont_give_up: "🤲 لا تستسلم، ابدأ الآن",
+
+stats_performed_of: "أديت {{done}} من أصل {{total}} صلاة مسجلة",
+
+stats_this_week: "هذا الأسبوع",
+stats_this_month: "هذا الشهر",
+
+stats_strongest: "الأقوى:",
+stats_needs_attention: "يحتاج اهتمام:",
+
+stats_breakdown_title: "📈 تفاصيل كل صلاة",
+stats_no_data: "لا توجد بيانات",
+stats_prayer_label: "الصلاة",
+
+stats_heatmap_title: "🗓️ السجل اليومي",
+
+stats_legend_done: "تمت",
+stats_legend_missed: "فاتت",
+stats_legend_empty: "غير مسجلة",
+
+stats_monthly_title: "🔥 معدل الإنجاز اليومي (30 يوم)",
+
+stats_scale_less: "أقل",
+stats_scale_more: "أكثر",
+
+stats_quote: "❝ إن الصلاة تنهى عن الفحشاء والمنكر ❞",
+stats_quote_source: "سورة العنكبوت — آية 45",
+
+stats_toast_recorded: "تم التسجيل ✅",
+stats_toast_missed: "تم تحديدها كفائتة ❌",
+stats_toast_updated: "تم تحديث الإحصائيات",
+
+day_sun: "الأحد",
+day_mon: "الإثنين",
+day_tue: "الثلاثاء",
+day_wed: "الأربعاء",
+day_thu: "الخميس",
+day_fri: "الجمعة",
+day_sat: "السبت",
   }
 };

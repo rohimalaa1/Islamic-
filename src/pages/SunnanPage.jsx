@@ -44,6 +44,10 @@ export default function SunnanPage() {
   ];
 
   return (
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div className="pattern-overlay" style={{ zIndex: 0 }} />
+    
+    <div className="px-4 py-4 space-y-5" style={{ position: 'relative', zIndex: 1 }}></div>
     <div className="px-4 py-4 space-y-4" dir={isAr ? "rtl" : "ltr"}>
 
       {/* Header */}
@@ -194,5 +198,5 @@ export default function SunnanPage() {
         )}
       </AnimatePresence>
     </div>
-  );
+ </div> );
 }

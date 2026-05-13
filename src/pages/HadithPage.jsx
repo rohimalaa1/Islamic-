@@ -10,6 +10,10 @@ export default function HadithPage() {
   const isAr = i18n.language === 'ar';
 
   return (
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div className="pattern-overlay" style={{ zIndex: 0 }} />
+    
+    <div className="px-4 py-4 space-y-5" style={{ position: 'relative', zIndex: 1 }}></div>
     <div className="px-4 py-4 space-y-4">
       <h1 className="text-xl font-bold arabic-text" style={{ color: 'var(--color-gold)' }}>
         📜 {t('hadith')}
@@ -95,6 +99,7 @@ export default function HadithPage() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

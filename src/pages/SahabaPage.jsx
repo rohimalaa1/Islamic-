@@ -21,6 +21,10 @@ export default function SahabaPage() {
   const openSahabi = (s) => { setSelected(s); setActiveStory(0); };
 
   return (
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div className="pattern-overlay" style={{ zIndex: 0 }} />
+    
+    <div className="px-4 py-4 space-y-5" style={{ position: 'relative', zIndex: 1 }}></div>
     <div className="px-4 py-4 space-y-4">
 
       {/* ── Header ── */}
@@ -226,6 +230,7 @@ export default function SahabaPage() {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
     </div>
   );
 }

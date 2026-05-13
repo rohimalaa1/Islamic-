@@ -145,7 +145,6 @@ function LessonViewer({ lesson, onBack }) {
         </div>
       </div>
 
-      {/* ✅ FIXED CONTENT */}
       <div className="rounded-2xl p-5 space-y-3"
         style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
         {paragraphs.map((p, i) => (
@@ -173,120 +172,127 @@ function LessonViewer({ lesson, onBack }) {
 
 /* ── Main Page ── */
 export default function LessonsPage() {
-  const [selectedCat, setSelectedCat]     = useState(null);
+  const [selectedCat, setSelectedCat]       = useState(null);
   const [selectedLesson, setSelectedLesson] = useState(null);
 
   if (selectedLesson) {
     return (
-      <div className="px-4 py-4">
-        <AnimatePresence mode="wait">
-          <LessonViewer key={selectedLesson.id} lesson={selectedLesson}
-            onBack={() => setSelectedLesson(null)} />
-        </AnimatePresence>
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
+        <div className="pattern-overlay" style={{ zIndex: 0 }} />
+        <div className="px-4 py-4" style={{ position: 'relative', zIndex: 1 }}>
+          <AnimatePresence mode="wait">
+            <LessonViewer key={selectedLesson.id} lesson={selectedLesson}
+              onBack={() => setSelectedLesson(null)} />
+          </AnimatePresence>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="px-4 py-4 space-y-4">
-      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-xl font-bold arabic-text" style={{ color: 'var(--color-gold)' }}>
-          📚 الدروس الدينية
-        </h1>
-        <p className="text-xs mt-1" style={{ color: 'var(--color-text-muted)' }}>
-          {lessonsCategories.reduce((a, c) => a + c.lessons.length, 0)} درس في {lessonsCategories.length} أقسام
-        </p>
-      </motion.div>
+    <div style={{ position: 'relative', minHeight: '100vh' }}>
+      <div className="pattern-overlay" style={{ zIndex: 0 }} />
 
-      <AnimatePresence mode="wait">
-        {!selectedCat ? (
-          <motion.div key="cats" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="space-y-3">
-            {lessonsCategories.map((cat, i) => (
-              <motion.button key={cat.id}
-                initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.06 }} whileTap={{ scale: 0.98 }}
-                onClick={() => setSelectedCat(cat)}
-                className="w-full text-right rounded-2xl p-4 transition-all"
-                style={{ background: cat.color, border: '1px solid var(--color-border)' }}>
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0"
-                    style={{ background: 'rgba(0,0,0,0.1)' }}>
-                    {cat.icon}
-                  </div>
-                  <div className="flex-1 text-right">
-                    <h3 className="font-bold arabic-text text-base" style={{ color: 'var(--color-text)' }}>
-                      {cat.title}
-                    </h3>
-                    <p className="text-xs mt-0.5 arabic-text" style={{ color: 'var(--color-text-muted)' }}>
-                      {cat.description}
-                    </p>
-                    <span className="inline-block mt-1.5 text-xs px-2 py-0.5 rounded-full"
-                      style={{ background: 'rgba(212,175,55,0.15)', color: 'var(--color-gold)' }}>
-                      {cat.lessons.length} درس
-                    </span>
-                  </div>
-                </div>
-              </motion.button>
-            ))}
-          </motion.div>
-        ) : (
-          <motion.div key="lessons" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }} className="space-y-3">
-            <button onClick={() => setSelectedCat(null)}
-              className="flex items-center gap-2 text-sm px-3 py-1.5 rounded-lg"
-              style={{ background: 'var(--color-surface-2)', color: 'var(--color-text-muted)', border: '1px solid var(--color-border)' }}>
-              ← الأقسام
-            </button>
+      <div className="px-4 py-4 space-y-4" style={{ position: 'relative', zIndex: 1 }}>
+        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="text-xl font-bold arabic-text" style={{ color: 'var(--color-gold)' }}>
+            📚 الدروس الدينية
+          </h1>
+          <p className="text-xs mt-1" style={{ color: 'var(--color-text-muted)' }}>
+            {lessonsCategories.reduce((a, c) => a + c.lessons.length, 0)} درس في {lessonsCategories.length} أقسام
+          </p>
+        </motion.div>
 
-            <div className="flex items-center gap-3 p-4 rounded-2xl"
-              style={{ background: selectedCat.color, border: '1px solid var(--color-border)' }}>
-              <span className="text-3xl">{selectedCat.icon}</span>
-              <div>
-                <h2 className="font-bold arabic-text" style={{ color: 'var(--color-text)' }}>{selectedCat.title}</h2>
-                <p className="text-xs arabic-text" style={{ color: 'var(--color-text-muted)' }}>{selectedCat.description}</p>
-              </div>
-            </div>
-
-            {selectedCat.lessons.map((lesson, i) => {
-              const lv = LEVEL_COLOR[lesson.level] || LEVEL_COLOR['مبتدئ'];
-              return (
-                <motion.button key={lesson.id}
-                  initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+        <AnimatePresence mode="wait">
+          {!selectedCat ? (
+            <motion.div key="cats" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              className="space-y-3">
+              {lessonsCategories.map((cat, i) => (
+                <motion.button key={cat.id}
+                  initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.06 }} whileTap={{ scale: 0.98 }}
-                  onClick={() => setSelectedLesson({ ...lesson, categoryTitle: selectedCat.title, categoryIcon: selectedCat.icon })}
+                  onClick={() => setSelectedCat(cat)}
                   className="w-full text-right rounded-2xl p-4 transition-all"
-                  style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm flex-shrink-0"
-                      style={{ background: 'rgba(212,175,55,0.12)', color: 'var(--color-gold)' }}>
-                      {i + 1}
+                  style={{ background: cat.color, border: '1px solid var(--color-border)' }}>
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 rounded-2xl flex items-center justify-center text-3xl flex-shrink-0"
+                      style={{ background: 'rgba(0,0,0,0.1)' }}>
+                      {cat.icon}
                     </div>
                     <div className="flex-1 text-right">
-                      <h3 className="font-semibold arabic-text text-sm" style={{ color: 'var(--color-text)' }}>
-                        {lesson.title}
+                      <h3 className="font-bold arabic-text text-base" style={{ color: 'var(--color-text)' }}>
+                        {cat.title}
                       </h3>
-                      <div className="flex items-center justify-end gap-2 mt-1">
-                        <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>⏱ {lesson.duration}</span>
-                        <span className="text-xs px-2 py-0.5 rounded-full"
-                          style={{ background: lv.bg, color: lv.color }}>
-                          {lesson.level}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center gap-1 flex-shrink-0">
-                      <span className="text-xs px-2 py-0.5 rounded-full"
-                        style={{ background: 'rgba(45,106,79,0.15)', color: '#4ade80' }}>
-                        {lesson.quiz?.length || 0} سؤال
+                      <p className="text-xs mt-0.5 arabic-text" style={{ color: 'var(--color-text-muted)' }}>
+                        {cat.description}
+                      </p>
+                      <span className="inline-block mt-1.5 text-xs px-2 py-0.5 rounded-full"
+                        style={{ background: 'rgba(212,175,55,0.15)', color: 'var(--color-gold)' }}>
+                        {cat.lessons.length} درس
                       </span>
                     </div>
                   </div>
                 </motion.button>
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div key="lessons" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }} className="space-y-3">
+              <button onClick={() => setSelectedCat(null)}
+                className="flex items-center gap-2 text-sm px-3 py-1.5 rounded-lg"
+                style={{ background: 'var(--color-surface-2)', color: 'var(--color-text-muted)', border: '1px solid var(--color-border)' }}>
+                ← الأقسام
+              </button>
+
+              <div className="flex items-center gap-3 p-4 rounded-2xl"
+                style={{ background: selectedCat.color, border: '1px solid var(--color-border)' }}>
+                <span className="text-3xl">{selectedCat.icon}</span>
+                <div>
+                  <h2 className="font-bold arabic-text" style={{ color: 'var(--color-text)' }}>{selectedCat.title}</h2>
+                  <p className="text-xs arabic-text" style={{ color: 'var(--color-text-muted)' }}>{selectedCat.description}</p>
+                </div>
+              </div>
+
+              {selectedCat.lessons.map((lesson, i) => {
+                const lv = LEVEL_COLOR[lesson.level] || LEVEL_COLOR['مبتدئ'];
+                return (
+                  <motion.button key={lesson.id}
+                    initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.06 }} whileTap={{ scale: 0.98 }}
+                    onClick={() => setSelectedLesson({ ...lesson, categoryTitle: selectedCat.title, categoryIcon: selectedCat.icon })}
+                    className="w-full text-right rounded-2xl p-4 transition-all"
+                    style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)' }}>
+                    <div className="flex items-center justify-between gap-3">
+                      <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm flex-shrink-0"
+                        style={{ background: 'rgba(212,175,55,0.12)', color: 'var(--color-gold)' }}>
+                        {i + 1}
+                      </div>
+                      <div className="flex-1 text-right">
+                        <h3 className="font-semibold arabic-text text-sm" style={{ color: 'var(--color-text)' }}>
+                          {lesson.title}
+                        </h3>
+                        <div className="flex items-center justify-end gap-2 mt-1">
+                          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>⏱ {lesson.duration}</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full"
+                            style={{ background: lv.bg, color: lv.color }}>
+                            {lesson.level}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                        <span className="text-xs px-2 py-0.5 rounded-full"
+                          style={{ background: 'rgba(45,106,79,0.15)', color: '#4ade80' }}>
+                          {lesson.quiz?.length || 0} سؤال
+                        </span>
+                      </div>
+                    </div>
+                  </motion.button>
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }

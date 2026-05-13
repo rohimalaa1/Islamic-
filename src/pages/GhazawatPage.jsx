@@ -20,6 +20,10 @@ export default function GhazawatPage() {
   const [selected, setSelected] = useState(null);
 
   return (
+      <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div className="pattern-overlay" style={{ zIndex: 0 }} />
+    
+    <div className="px-4 py-4 space-y-5" style={{ position: 'relative', zIndex: 1 }}></div>
     <div className="px-4 py-4 space-y-4">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="text-xl font-bold arabic-text" style={{ color: 'var(--color-gold)' }}>
@@ -187,6 +191,7 @@ export default function GhazawatPage() {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
     </div>
   );
 }

@@ -17,6 +17,10 @@ export default function AzkarPage() {
   const currentData = TABS[activeTab].data;
 
   return (
+    <div style={{ position: 'relative', minHeight: '100vh' }}>
+    <div className="pattern-overlay" style={{ zIndex: 0 }} />
+    
+    <div className="px-4 py-4 space-y-5" style={{ position: 'relative', zIndex: 1 }}></div>
     <div className="px-4 py-4 space-y-4">
       <h1 className="text-xl font-bold arabic-text" style={{ color: 'var(--color-gold)' }}>
         📿 {t('azkar')}
@@ -52,5 +56,7 @@ export default function AzkarPage() {
         </motion.div>
       </AnimatePresence>
     </div>
+    </div>
+    
   );
 }
